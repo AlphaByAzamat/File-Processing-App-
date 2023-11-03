@@ -1,0 +1,2 @@
+Extension ClassLoader: This is the child classloader of Bootstrap and parent classloader of System classloader.
+It loads the jar files located inside $JAVA_HOME/jre/lib/ext directory.

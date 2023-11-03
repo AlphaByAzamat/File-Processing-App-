@@ -1,0 +1,3 @@
+System/Application ClassLoader: This is the child classloader of Extension classloader.
+It loads the class files from the classpath. By default, the classpath is set to the current directory.
+You can change the classpath using "-cp" or "-classpath" switch. It is also known as Application classloader.
