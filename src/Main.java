@@ -8,23 +8,26 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.*;
 
 public class Main {
+    //creating LOGGER
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws IOException {
-
-
+        /*SETTING HANDLER AND LOGGER
+        */
         Handler handler = new FileHandler("output_logs/logs.txt", true);
         SimpleFormatter simpleFormatter = new SimpleFormatter();
         handler.setFormatter(simpleFormatter);
         handler.setLevel(Level.INFO);
         logger.addHandler(handler);
         int counter = 0;
+        //creating list for files to process later
         ArrayList<String> txtList = new ArrayList<>();
         txtList.add("input_files/file1.txt");
         txtList.add("input_files/file2.txt");
         txtList.add("input_files/file3.txt");
         txtList.add("input_files/file4.txt");
         for (String path : txtList) {
+            //creating Runnable task
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
@@ -52,6 +55,7 @@ public class Main {
                     }
                 }
             };
+            //creating Threadpool
             ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(4);
             scheduledExecutorService.scheduleAtFixedRate(runnable, 1, 5, TimeUnit.SECONDS);
 
